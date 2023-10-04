@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('questions2', function (Blueprint $table) {
-            $table->id();
-            $table->string('body',300); 
+        Schema::table('makeschedules', function (Blueprint $table) {
+            //
+            $table->foreignId('schedule_id')->constrained();
+            $table->foreignId('profile_id')->constrained();
+            $table->string('body',50);
         });
     }
 
@@ -26,6 +28,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions2');
+        Schema::table('makeschedules', function (Blueprint $table) {
+            //
+        });
     }
 };
